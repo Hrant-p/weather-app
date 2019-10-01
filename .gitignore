@@ -1,0 +1,8 @@
+/node_modules
+package-lock.json
+
+
+# dependencies
+/client/node_modules
+/client/.pnp
+/client/.pnp.js

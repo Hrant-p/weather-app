@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="80e160e1-dc9c-45b4-aaf8-8134865ed5d4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a89fda0d-1aff-46ba-ba2c-9ad15d5e87d1" name="Default Changelist" comment="initialized client-side app">
+      <change afterPath="$PROJECT_DIR$/socket-io-client/src/App.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +18,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/socket-io-client" />
   </component>
   <component name="ProjectId" id="1RbHQlf3Cm2dHqvy86jc72kGVJM" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">

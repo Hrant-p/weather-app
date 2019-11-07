@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a89fda0d-1aff-46ba-ba2c-9ad15d5e87d1" name="Default Changelist" comment="initialized client-side app">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/darkSky.js" beforeDir="false" afterPath="$PROJECT_DIR$/API/darkSky.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +47,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="server" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -63,6 +70,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.server" />
       </list>
     </recent_temporary>
@@ -79,6 +87,8 @@
       <updated>1569928861976</updated>
       <workItem from="1569928863334" duration="3971000" />
       <workItem from="1569946003543" duration="3021000" />
+      <workItem from="1573154297478" duration="1038000" />
+      <workItem from="1573155590723" duration="747000" />
     </task>
     <task id="LOCAL-00001" summary="installed socket and server configurations">
       <created>1569931598006</created>

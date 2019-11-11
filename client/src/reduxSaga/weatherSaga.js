@@ -8,7 +8,7 @@ import { endpoint } from "../API";
 let socket;
 
 // wrapping function for socket.on
-function connectSocket() {
+function connect() {
     socket = io(endpoint);
     return new Promise(resolve => {
         socket.on('FromAPI', () => {
@@ -16,6 +16,24 @@ function connectSocket() {
         });
     });
 }
+
+const disconnect = () => {
+    socket = io(socketServerURL);
+    return new Promise((resolve) => {
+        socket.on('disconnect', () => {
+            resolve(socket);
+        });
+    });
+};
+
+const reconnect = () => {
+    socket = io(socketServerURL);
+    return new Promise((resolve) => {
+        socket.on('reconnect', () => {
+            resolve(socket);
+        });
+    });
+};
 
 // This is how a channel is created
 const createSocketChannel = socket => eventChannel(emit => {
@@ -27,8 +45,16 @@ const createSocketChannel = socket => eventChannel(emit => {
 // saga that listens to the socket and puts the new data into the reducer
 function* listenServerSaga() {
     try {
+        yield put({type: CHANNEL_ON});
+        const {timeout} = yield race({
+            connected: call(connect),
+            timeout: delay(2000),
+        });
+        if (timeout) {
+            yield put({type: SERVER_OFF});
+        }
         // connect to the server
-        const socket = yield call(connectSocket);
+        const socket = yield call(connect);
         // then create a socket channel
         const socketChannel = yield call(createSocketChannel, socket);
         // then put the new data into the reducer
@@ -44,6 +70,6 @@ function* listenServerSaga() {
 
 export function* weatherSaga() {
     yield all([
-        takeLatest(weatherActionTypes.GET_REQUEST, listenServerSaga )
+        takeLatest(weatherActionTypes.GET_REQUEST, listenServerSaga),
     ])
 }

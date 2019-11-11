@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a89fda0d-1aff-46ba-ba2c-9ad15d5e87d1" name="Default Changelist" comment="initialized client-side app">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +86,8 @@
       <workItem from="1569928863334" duration="3971000" />
       <workItem from="1569946003543" duration="3021000" />
       <workItem from="1573154297478" duration="1038000" />
-      <workItem from="1573155590723" duration="747000" />
+      <workItem from="1573155590723" duration="3253000" />
+      <workItem from="1573410970151" duration="7038000" />
     </task>
     <task id="LOCAL-00001" summary="installed socket and server configurations">
       <created>1569931598006</created>

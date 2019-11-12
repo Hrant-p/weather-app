@@ -35,20 +35,12 @@ export function getTest() {
     }
 }
 
-export function channelOn() {
-    return { type: weatherActionTypes.CHANNEL_ON, payload: {}}
+export function setChannelStatus(status) {
+    return { type: weatherActionTypes.SET_CHANNEL_STATUS, payload: {status}}
 }
 
-export function channelOff() {
-    return { type: weatherActionTypes.CHANNEL_OFF, payload: {}}
-}
-
-export function serverOn() {
-    return { type: weatherActionTypes.SERVER_OFF, payload: {}}
-}
-
-export function serverOff() {
-    return { type: weatherActionTypes.CHANNEL_ON, payload: {}}
+export function setServerStatus(status) {
+    return { type: weatherActionTypes.SET_SERVER_STATUS, payload: {status}}
 }
 
 export function channelStart() {

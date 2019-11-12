@@ -3,13 +3,13 @@ import { all, put, take, call, takeLatest } from 'redux-saga/effects';
 import {
     getRequestSucceed,
     setChannelStatus,
-    setErrorState,
+    setErrorState, setLoadingState,
     setServerStatus
 } from "../store/action-creators";
 import io from 'socket.io-client';
 import { eventChannel } from 'redux-saga';
 import { endpoint } from "../API";
-import {cancelled, delay, fork, race} from "@redux-saga/core/effects";
+import {cancelled, debounce, delay, fork, race, retry, spawn, throttle} from "@redux-saga/core/effects";
 
 let socket;
 
@@ -66,23 +66,30 @@ const createSocketChannel = socket => eventChannel(emit => {
 // saga that listens to the socket and puts the new data into the reducer
 function* listenServerSaga() {
     try {
+        yield put(setLoadingState(true));
         yield put(setChannelStatus('on'));
-        const {timeout} = yield race({
-            connected: call(connect),
-            timeout: delay(2000),
-        });
-        if (timeout) {
-            yield put(setServerStatus('off'));
-        }
+        // const {timeout} = yield race({
+        //     connected: call(connect),
+        //     timeout: delay(2000),
+        // });
+        // if (timeout) {
+        //     yield put(setServerStatus('off'));
+        // }
+        yield fork(check)
         // connect to the server
         const socket = yield call(connect);
         // then create a socket channel
         const socketChannel = yield call(createSocketChannel, socket);
+        // yield fork(listenDisconnectSaga);
+        // yield fork(listenConnectSaga);
         yield put(setServerStatus('on'));
+        yield put(setLoadingState(false));
         // then put the new data into the reducer
         while (true) {
             const payload = yield take(socketChannel);
-            yield put(getRequestSucceed(payload));
+            if (payload) {
+                yield put(getRequestSucceed(payload));
+            }
         }
     } catch (e) {
         yield put(setErrorState(e));
@@ -96,9 +103,26 @@ function* listenServerSaga() {
     }
 }
 
+function* check() {
+    try {
+        const {timeout} = yield race({
+            connected: call(connect),
+            timeout: delay(2000),
+        });
+        if (timeout) {
+            yield put(setServerStatus('off'));
+        }
+    } catch (e) {
+        alert(e)
+    }
+}
+
 function* stopChannelSaga() {
     try{
-        yield socket.disconnect(true);
+        if (socket) {
+            yield socket.disconnect(true);
+        }
+        yield put(getRequestSucceed(null));
         yield put(setServerStatus('unknown'));
         yield put(setChannelStatus('off'));
     } catch (e) {

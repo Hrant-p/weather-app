@@ -10,46 +10,37 @@ import {
 } from "./store/selectors";
 import './App.scss';
 import {channelStop, getRequest} from "./store/action-creators";
+import Spinner from "./Spinner/Spinner";
 
 class App extends Component {
 
-    componentDidMount() {
-        // this.props.getRequestActionCreators()
-    }
-
     render() {
-        const { temperature } = this.props;
+        const { temperature, isLoading } = this.props;
         return (
             <div className="temperature">
                 <div className="field">
-                    {temperature
-                        ? <p>The temperature in Yerevan is: {temperature} °F</p>
-                        : <p>Loading...</p>}
-                <div className='action'>
-                    <button onClick={this.props.getRequestActionCreators}>
-                        Start Socket Channel
-                    </button>
-                    <button onClick={this.props.stopChannelActionCreator}>
-                        Stop Socket Channel
-                    </button>
-                </div>
-                <div className="status">
-                    <h2>
-                        Connection Info
-                    </h2>
-                    <h4>
-                        Server status -
-                        <span>
-                            {this.props.serverStatus}
-                        </span>
-                    </h4>
-                    <h4>
-                        Channel status -
-                        <span>
-                            {this.props.channelStatus}
-                        </span>
-                    </h4>
-                </div>
+                    <div className='action'>
+                        <button onClick={this.props.getRequestActionCreators}>
+                            Start Socket Channel
+                        </button>
+                        <button onClick={this.props.stopChannelActionCreator}>
+                            Stop Socket Channel
+                        </button>
+                    </div>
+                        <hr/>
+                    <div className="status">
+                        <h4>
+                            Connection Info
+                        </h4>
+                        <h5>
+                            Server status - {this.props.serverStatus}
+                        </h5>
+                        <h5>
+                            Channel status - {this.props.channelStatus}
+                        </h5>
+                    </div>
+                    {<p>The temperature in Yerevan is: {temperature} °F</p>}
+                    {isLoading && <Spinner />}
                 </div>
             </div>
         );
